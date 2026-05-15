@@ -1,0 +1,57 @@
+<!-- Refusal Modal -->
+<div class="modal fade" id="refuserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="refuserForm" method="POST" action="#">
+                <?php echo csrf_field(); ?>
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="fas fa-times-circle me-2"></i>Refuser le Devis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Vous êtes sur le point de refuser ce devis. Veuillez indiquer la raison du refus.
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="commentaire_refus" class="form-label">
+                            Raison du refus <span class="text-danger">*</span>
+                        </label>
+                        <textarea class="form-control" name="commentaire" id="commentaire_refus" rows="4" 
+                                  placeholder="Expliquez pourquoi ce devis est refusé..." required></textarea>
+                        <small class="text-muted">Ce commentaire sera visible par le gestionnaire</small>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="confirmer_refus" required>
+                        <label class="form-check-label" for="confirmer_refus">
+                            Je confirme vouloir refuser ce devis
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-times me-2"></i>Refuser le devis
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var refuserModal = document.getElementById('refuserModal');
+    if (refuserModal) {
+        refuserModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var deviId = button.getAttribute('data-devi-id');
+            document.getElementById('refuserForm').setAttribute('action', '/admin/devis/refuser/' + deviId);
+            document.getElementById('commentaire_refus').value = '';
+            document.getElementById('confirmer_refus').checked = false;
+        });
+    }
+});
+</script><?php /**PATH C:\Users\JUSTO TCHEUMANI\DESKTOP\CMCU\Nouveaudossier\Deployfortest\cmcuapp\cmcuapp\resources\views/admin/devis/modals/refusal.blade.php ENDPATH**/ ?>

@@ -1,0 +1,31 @@
+{
+  "resources/assets/sass/app.scss": {
+    "file": "css/app2.css",
+    "src": "resources/assets/sass/app.scss",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/assets/sass/tailwind.css": {
+    "file": "css/tailwind.css",
+    "src": "resources/assets/sass/tailwind.css",
+    "isEntry": true,
+    "name": "tailwind",
+    "names": [
+      "tailwind.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "js/app.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "css/app.css",
+      "css/tailwind.css",
+      "css/app2.css"
+    ]
+  }
+}

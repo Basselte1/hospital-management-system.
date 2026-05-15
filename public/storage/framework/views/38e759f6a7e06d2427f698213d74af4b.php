@@ -1,0 +1,156 @@
+<tbody id="editMotifMontform" style="display: none;">
+    <form action="<?php echo e(route('patients.motif_montant.update', $patient->id)); ?>" method="POST">
+        <?php echo csrf_field(); ?> <?php echo method_field('PUT'); ?>
+        <tr>
+            <td>
+                <label for="name" class="col-form-label text-md-right">Nom & prénom du patient :</label>
+            </td>
+            <td>
+                <div class="input-group">
+                    <input name="name" class="form-control" value="<?php echo e(old('name') ?? $patient->name); ?>" type="text" placeholder="name">
+                    <input name="prenom" class="form-control" value="<?php echo e(old('prenom') ?? $patient->prenom); ?>" type="text" placeholder="prenom">
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Médecin :</b> <span class="text-danger">*</span>
+
+
+            </td>
+            <td>
+                <select class="form-control" name="medecin_r" id="medecin_r" required>
+                    <option value="medecin_r"> Nom du médecin</option>
+                    <?php $__currentLoopData = $medecin; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($user->name); ?> <?php echo e($user->prenom); ?>" <?php echo e(old('medecin_r', $patient->medecin_r) ==   $user->name.' '.$user->prenom ? 'selected' : ''); ?>><?php echo e($user->name); ?> <?php echo e($user->prenom); ?>
+
+                    </option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="motif" class="col-form-label text-md-right">Motif : <span class="text-danger">*</span></label>
+            </td>
+            <td>
+                <select class="form-control" name="motif" id="motif" onchange="new_ckChange(this)">
+                    <option <?php echo e(old('motif', $patient->motif) ==  'Consultation' ? 'selected' : ''); ?>>Consultation</option>
+                    <option <?php echo e(old('motif', $patient->motif) ==  'Acte' ? 'selected' : ''); ?>>Acte</option>
+                    <option <?php echo e(old('motif', $patient->motif) ==  'Examen' ? 'selected' : ''); ?>>Examen</option>
+                    <option <?php echo e(old('motif', $patient->motif) ==  'Autres' ? 'selected' : ''); ?>>Autres</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="details_motif" id="label_details_motif" class="col-form-label text-md-right">Détails motif : <span class="text-danger">*</span></label>
+            </td>
+            <td>
+                <input name="details_motif" id="details_motif" class="form-control" value="<?php echo e(old('details_motif') ?? $patient->details_motif); ?>" type="text" placeholder="Précisez le motif">
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <label for="montant" class="col-form-label text-md-right">Montant :<span class="text-danger">*</span></label>
+            </td>
+            <td>
+                <input name="montant" class="form-control" value="<?php echo e(old('montant') ?? $patient->montant); ?>" type="number" placeholder="montant">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="assurance" class="col-form-label text-md-right">Assurance</label>
+            </td>
+            <td>
+                <input name="assurance" class="form-control" value="<?php echo e(old('assurance') ?? $patient->assurance); ?>" type="text" placeholder=" nom de l'assurance si le patient est assuré">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="avance" class="col-form-label text-md-right">Avance :<span class="text-danger">*</span></label>
+            </td>
+            <td>
+                <input name="avance" class="form-control" value="<?php echo e(old('avance') ?? $patient->avance); ?>" type="number" placeholder="avance">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="numero_assurance" class="col-form-label text-md-right">Numéro d'assurance</label>
+            </td>
+            <td>
+                <input name="numero_assurance" class="form-control" value="<?php echo e(old('numero_assurance') ?? $patient->numero_assurance); ?>" type="text" placeholder="Numéro d'assurance si le patient est assuré">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for=" prise_en_charge" class="col-form-label text-md-right"> Taux de Prise en Charge : <span class="text-danger"></span></label>
+            </td>
+            <td>
+                <div class="input-group mb-3">
+                    <select class="form-control" name="prise_en_charge" id="prise_en_charge" required>
+                        <?php $__currentLoopData = range(0, 100); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $taux): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option <?php echo e(old('prise_en_charge', $patient->prise_en_charge) ==  $taux ? 'selected' : ''); ?>><?php echo e($taux); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"> % </span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="mode_paiement">Moyen de paiement</label></td>
+            <td>
+                <div class="form-group">
+                    <select name="mode_paiement" id="mode_paiement" class="form-control">
+                        <optgroup label="Monaie électronique">
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'orange money' ? 'selected' : ''); ?> value="orange money">Orange Money</option>
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'mtn mobile money' ? 'selected' : ''); ?> value="mtn mobile money">MTN Mobile Money</option>
+                        </optgroup>
+                        <optgroup label="Autres moyens">
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'espèce' ? 'selected' : ''); ?> value="espèce">Espèce</option>
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'chèque' ? 'selected' : ''); ?> value="chèque">Chèque</option>
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'virement' ? 'selected' : ''); ?> value="virement">Virement</option>
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'bon de prise en charge' ? 'selected' : ''); ?> value="bon de prise en charge">Bon de prise en charge</option>
+                            <option <?php echo e(old('mode_paiement', $patient->mode_paiement) ==  'autre' ? 'selected' : ''); ?> value="autre">Autre</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </td>
+            <td></td>
+        </tr>
+
+    </form>
+</tbody>
+<?php $__env->startSection('script'); ?>
+<script>
+    function new_ckChange(ckType) {
+
+        var motif = document.getElementById('motif');
+        var choix = motif[motif.selectedIndex].value;
+        if (choix == 'Consultation') {
+            document.getElementById("label_details_motif").innerHTML = 'Détail motif <span class="text-danger">*</span>';
+            document.getElementById("details_motif").value = "Consultation";
+        } else {
+            document.getElementById("details_motif").value = "";
+        }
+        if (choix == 'Acte' || choix == 'Examen') {
+            document.getElementById("label_details_motif").innerHTML = 'Type ' + choix.toLowerCase() + ' <span class="text-danger">*</span>';
+        }
+        if (choix == 'Autres') {
+            document.getElementById("label_details_motif").innerHTML = 'Détails motif <span class="text-danger">*</span>';
+        }
+
+    }
+</script>
+<?php $__env->stopSection(); ?><?php /**PATH C:\Users\JUSTO TCHEUMANI\DESKTOP\CMCU\Nouveaudossier\Deployfortest\cmcuapp\cmcuapp\resources\views/admin/consultations/partials/motif_et_montant.blade.php ENDPATH**/ ?>

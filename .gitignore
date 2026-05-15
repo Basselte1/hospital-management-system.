@@ -1,0 +1,46 @@
+node_modules
+public\hot
+public\images
+public\storage
+public\web.config
+storage\*.key
+storage\app\public\examens_scannes
+vendor
+database\database.sqlite
+database\.sqlite
+
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.idea
+.env
+temp-*.rdb
+*.rdb
+*.sqlite
+database.sqlite
+herokuKey.pub
+herokuKey
+env.txt
+phpunit.xml
+optimize-database.bat
+/scripts
+scheduler.bat
+storage_filename.pdf
+storage\devis.pdf
+storage\crbo.pdf
+queue-worker.bat
+
+.rr.yaml
+_ _ r a r _ 1 6 0 7 2 . 8 1 6 3 . r a r t e m p 
+ 
+ _ _ r a r _ 1 6 0 7 2 . 8 1 6 3 . r a r t e m p 
+ 
+ * . r a r t e m p 
+ 
+ _ _ r a r _ 1 6 0 7 2 . 8 1 6 3 . r a r t e m p 
+ 
+ * . r a r t e m p 
+ 
+ 

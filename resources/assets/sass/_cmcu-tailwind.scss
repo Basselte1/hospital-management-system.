@@ -1,0 +1,125 @@
+// ============================================================================
+// CMCU Tailwind Components — Préparation migration Bootstrap → Tailwind
+// ============================================================================
+// Ce fichier est VOLONTAIREMENT NON IMPORTÉ pour l'instant.
+// À intégrer dans app.scss ou tailwind.css après la migration complète.
+//
+// Objectif : regrouper ici tous les composants CMCU (boutons, cartes, alertes,
+// badges, tableaux) actuellement définis dans tailwind.css avec préfixe .tw-*.
+// ============================================================================
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-cmcu {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 border border-transparent cursor-pointer;
+  }
+  .btn-cmcu-primary {
+    @apply btn-cmcu bg-blue-600 text-white hover:bg-blue-700;
+  }
+  .btn-cmcu-secondary {
+    @apply btn-cmcu bg-white text-gray-700 border-gray-300 hover:bg-gray-50;
+  }
+  .btn-cmcu-danger {
+    @apply btn-cmcu bg-red-600 text-white hover:bg-red-700;
+  }
+  .btn-cmcu-success {
+    @apply btn-cmcu bg-green-600 text-white hover:bg-green-700;
+  }
+
+  /* ── Cards ── */
+  .card-cmcu {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden;
+  }
+  .card-cmcu-header {
+    @apply px-6 py-4 border-b border-gray-100 bg-gray-50 font-semibold text-sm text-gray-700;
+  }
+  .card-cmcu-body {
+    @apply p-6;
+  }
+  .card-cmcu-footer {
+    @apply px-6 py-4 border-t border-gray-100 bg-gray-50;
+  }
+
+  /* ── Forms ── */
+  .input-cmcu {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all shadow-sm text-sm;
+  }
+  .label-cmcu {
+    @apply block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1.5;
+  }
+
+  /* ── Badges ── */
+  .badge-cmcu {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-cmcu-primary {
+    @apply badge-cmcu bg-blue-100 text-blue-800;
+  }
+  .badge-cmcu-success {
+    @apply badge-cmcu bg-green-100 text-green-800;
+  }
+  .badge-cmcu-warning {
+    @apply badge-cmcu bg-amber-100 text-amber-800;
+  }
+  .badge-cmcu-danger {
+    @apply badge-cmcu bg-red-100 text-red-800;
+  }
+
+  /* ── Alerts ── */
+  .alert-cmcu {
+    @apply p-4 rounded-lg mb-4 text-sm;
+  }
+  .alert-cmcu-info {
+    @apply alert-cmcu bg-blue-50 border border-blue-200 text-blue-800;
+  }
+  .alert-cmcu-success {
+    @apply alert-cmcu bg-green-50 border border-green-200 text-green-800;
+  }
+  .alert-cmcu-warning {
+    @apply alert-cmcu bg-amber-50 border border-amber-200 text-amber-800;
+  }
+  .alert-cmcu-danger {
+    @apply alert-cmcu bg-red-50 border border-red-200 text-red-800;
+  }
+
+  /* ── Tables ── */
+  .table-cmcu {
+    @apply min-w-full border-separate border-spacing-0;
+  }
+  .table-cmcu-header {
+    @apply bg-gray-50;
+  }
+  .table-cmcu-header-cell {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+  .table-cmcu-cell {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-t border-gray-100;
+  }
+
+  /* ── Modal ── */
+  .modal-cmcu-overlay {
+    @apply fixed inset-0 bg-black/50 z-40;
+  }
+  .modal-cmcu-container {
+    @apply fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-none;
+  }
+  .modal-cmcu-panel {
+    @apply bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden pointer-events-auto;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar-cmcu {
+    @apply flex flex-col h-screen w-64 min-w-[16rem] bg-[#1e40af] text-slate-200 transition-all duration-300 overflow-y-auto overflow-x-hidden sticky top-0 z-50;
+  }
+  .sidebar-cmcu-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 no-underline transition-all duration-200 hover:bg-[#2563eb] hover:text-white;
+  }
+  .sidebar-cmcu-link-active {
+    @apply sidebar-cmcu-link bg-[#1D4ED8] text-white shadow-md;
+  }
+
+  /* ── Navbar / Header ── */
+  .header-cmcu {
+    @apply flex items-center justify-between py-3 px-4 bg-white border-b border-slate-200 shadow-sm;
+  }
+}

@@ -1,0 +1,27 @@
+@import 'froala-editor/css/froala_editor.pkgd.min.css';
+
+// Font Awesome is compiled via SCSS (app.scss) so remove the separate CSS import to avoid relative path conflicts
+// @import '@fortawesome/fontawesome-free/css/all.min.css';
+
+// // @import 'public/admin/css/login.css';
+
+
+// @import 'public/admin/css/style4.css';
+// @import 'public/admin/css/style.css';
+// @import 'public/admin/css/bar.css';
+// @import 'public/admin/css/widgets.css';
+
+
+
+// Use relative path from resources/css for admin styles (unchanged)
+@import "../../public/admin/css/login.css";
+@import "../../public/admin/css/style4.css";
+@import "../../public/admin/css/style.css";
+@import "../../public/admin/css/bar.css";
+@import "../../public/admin/css/widgets.css";
+@import "../../public/admin/css/print_facture.css";
+@import "../../public/admin/css/bootstrap.css";
+@import "../../public/admin/css/pignose.calender.css";
+@import "../../public/admin/css/print_facture.css";
+@import "../../public/admin/css/simplyCountdown.css";
+
